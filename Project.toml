@@ -1,0 +1,13 @@
+name = "TDD"
+uuid = "df035e4a-a873-4384-912e-1778ac0a7288"
+authors = ["kalfton <36215989+kalfton@users.noreply.github.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
