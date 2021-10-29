@@ -9,12 +9,12 @@ using TDD
           [4]]        # ", node 5
 
     graph2 = [
-          [2],     # node 1
-          [],      # node 2
-          [2,4],        # ", node 3
+          [],     # node 1
+          [1,3],      # node 2
+          [],        # ", node 3
           [],        # ", node 4
-          [4,6],        # ", node 5
-          []]        # ", node 6
+          [4],        # ", node 5
+          [3,4]]        # ", node 6
 
     graph3 = Bool[
         1 1 1 0 0;
@@ -33,7 +33,7 @@ using TDD
     nodes = connectednodes(graph1, 1)
     @test nodes == [1,2,3]
     nodes = connectednodes(graph2, 5)
-    @test nodes == [4,5,6]
+    @test nodes == [4,5]
     nodes = connectednodes(graph3, 4)
     @test nodes == [4,5]
 
