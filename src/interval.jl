@@ -1,8 +1,8 @@
 export Interval
 
 struct Interval
-    a::Real
-    b::Real
+    a::Float64
+    b::Float64
     Interval(a, b) = a > b ? error("invalid input") : new(a, b)
     Interval(a::Real) = new(a, a)
     Interval(a::Char) = a == '\U2205' ? new(Inf, -Inf) : error("invalid input") # U+2205 is ∅
@@ -18,12 +18,9 @@ function Base.:(∈)(a::Real, A::Interval)
         return false
     end
 end
-A = Interval(1, 2)
-3 ∈ A
-4 ∉ A
 
-        function Base.isempty(A::Interval)
-    if A.a >= A.b
+function Base.isempty(A::Interval)
+    if A.a > A.b
         return true
     else
         return false

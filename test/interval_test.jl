@@ -11,7 +11,7 @@ using TDD
 
     @test isempty(Interval('∅'))
     @test !isempty(Interval(2,3))
-    @test isempty(Interval(2,2))
+    @test !isempty(Interval(2,2))
 
     @test issubset(Interval(2,3), Interval(2,3))
     @test issubset(Interval(2,3), Interval(-1.5,5))
@@ -31,13 +31,18 @@ using TDD
     mktemp() do fname, io
         show(io, Interval(3,5))
         seek(io, 0)
-        @test read(io, String)=="\u301a3, 5\u301b"
+        @test read(io, String)=="\u301a3.0, 5.0\u301b"
         truncate(io, 0)
         seek(io, 0)
         show(io, Interval('∅'))
         seek(io, 0)
         @test read(io, String)=="∅"
     end
+
+    io = IOBuffer()
+    show(io, Interval(3,5))
+    @test String(take!(io))=="\u301a3.0, 5.0\u301b"
+
 
 
 
